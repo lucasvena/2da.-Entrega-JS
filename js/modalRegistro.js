@@ -35,8 +35,13 @@ modalNewsletter.addEventListener('click', (event)=>{
 
 btnListo.addEventListener ('click', () => {
     console.log (inputNombre.value)
-    console.log (inputEmail.value)    
+    console.log (inputEmail.value)
+
+    localStorage.setItem('user', inputNombre.value)    
 })
+
+// const title = document.querySelector('#titulo-usuario')
+// title.innerText = `Bienvenido/a: ${inputNombre.value}`
 
 
 inputNombre.addEventListener ('change', () => {

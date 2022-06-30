@@ -72,7 +72,7 @@ const renderCarrito = () => {
         div.classList.add('productoEnCarrito')
 
         div.innerHTML = `
-                    <p>${producto.nombre}</p>
+                    <p>${producto.tipo}</p>
                     <p>Precio: $${producto.precio}</p>
                     <button onclick="removerDelCarrito(${producto.id})" class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
                     `
@@ -97,32 +97,3 @@ const renderTotal = () => {
 }
 
 // FIN FUNCIONES
-
-// LOCALSTORAGE y JSON
-
-let usuario
-const usuarioLS = localStorage.getItem('user')
-
-if (usuarioLS) {
-    usuario = usuarioLS
-} else {
-    usuario = prompt("Ingrese su nombre")
-    localStorage.setItem("user", usuario)
-}
-
-const title = document.querySelector('#titulo-usuario')
-title.innerText = `Bienvenido/a: ${usuario}`
-
-// console.log(usuarioLS)
-
-// console.log (catalogo)
-
-// const catalogoJSON = JSON.stringify(catalogo)
-
-// console.log (catalogoJSON)
-
-
-// console.log(typeof catalogoJSON)
-
-localStorage.setItem('catalogo', JSON.stringify(catalogo))
-
