@@ -40,10 +40,6 @@ btnListo.addEventListener ('click', () => {
     localStorage.setItem('user', inputNombre.value)    
 })
 
-// const title = document.querySelector('#titulo-usuario')
-// title.innerText = `Bienvenido/a: ${inputNombre.value}`
-
-
 inputNombre.addEventListener ('change', () => {
     // console.log(inputNombre.value)
 
@@ -54,6 +50,7 @@ inputNombre.addEventListener ('change', () => {
         inputNombre.classList.add('border-success')
         inputNombre.classList.remove('border-danger')
     }
+    // inputNombre.value.lenght < 4 ? inputNombre.classList.add('border-danger') : inputNombre.classList.remove('border-success') ?????
 })
 
 inputEmail.addEventListener ('change', () => {
