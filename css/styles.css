@@ -30,6 +30,16 @@ h1 {
     background-color: black;
 }
 
+/* ESTILOS CAROUSEL */
+.mi-carousel {
+   padding: 5rem;
+}
+
+.mi-item {
+    border-radius: 2rem;
+}
+/* FIN ESTILOS CAROUSEL */
+
 
 /* ESTILOS MODAL NEWSLETTER */
 .modalNewsletter-contenedor {

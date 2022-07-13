@@ -14,38 +14,31 @@ const botonVaciar = document.getElementById('vaciarCarrito')
 
 const carrito = JSON.parse(localStorage.getItem('carrito')) || []
 
+let stock = []
 
+// CARDS DE PRODUCTOS EN EL DOM CON FETCH
+fetch('./stock.json')
+    .then((resp) => resp.json())
+    .then((data) => {
+        stock = data
 
-// let carrito
-// const carritoEnLS = JSON.parse( localStorage.getItem('carrito'))
+        stock.forEach ( (producto) => {
+            const div = document.createElement('div')
+            div.classList.add('producto') 
+        
+            div.innerHTML = `
+                            <img src=${producto.img}/>
+                            <h4>${producto.tipo}</h4>
+                            <p>${producto.desc}</p>
+                            <p>Precio: $ ${producto.precio}</p>
+                            <p>Disponible: ${producto.stock} en stock</p>
+                            <button onclick="agregarAlCarrito(${producto.id})" class="boton-agregar"><i class="fas fa-shopping-cart"> + </i></button>
+                            `
+        
+            productosContainer.append(div) //Hago que se vean esos div en contenedor-productos en el html
+        })
+    })
 
-// if (carritoEnLS) {
-//     carrito = carritoEnLS
-
-//     renderCarrito()
-//     renderCantidad()
-//     renderTotal()
-// } else {
-//     carrito = []
-// }
- 
-
-// CARDS DE PRODUCTOS EN EL DOM
-catalogo.forEach ( (producto) => {
-    const div = document.createElement('div')
-    div.classList.add('producto')
-
-    div.innerHTML = `
-                    <img src=${producto.img}/>
-                    <h4>${producto.tipo}</h4>
-                    <p>${producto.desc}</p>
-                    <p>Precio: $ ${producto.precio}</p>
-                    <p>Disponible: ${producto.stock} en stock</p>
-                    <button onclick="agregarAlCarrito(${producto.id})" class="boton-agregar"><i class="fas fa-shopping-cart"> + </i></button>
-                    `
-
-    productosContainer.append(div) //Hago que se vean esos div en contenedor-productos en el html
-});
 
 // AGREGAR LOS PRODUCTOS AL CARRITO
 const agregarAlCarrito = (productoId) => {
@@ -56,7 +49,7 @@ const agregarAlCarrito = (productoId) => {
         itemInCart.cantidad++
         showMensaje(itemInCart.tipo)
     } else {
-        const item = catalogo.find( (producto) => producto.id === productoId)
+        const item = stock.find( (producto) => producto.id === productoId)
         const {id, tipo, precio} = item
         const itemToCart = {
         id, tipo, precio, cantidad: 1
